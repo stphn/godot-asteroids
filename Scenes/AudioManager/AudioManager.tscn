@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://425c6firqsy1"]
+
+[ext_resource type="Script" uid="uid://dbx2tksnhj0ju" path="res://Scenes/AudioManager/Scripts/AudioManager.gd" id="1_2ujyc"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_2ujyc")
+
+[node name="SFXPool" type="Node2D" parent="."]
+unique_name_in_owner = true

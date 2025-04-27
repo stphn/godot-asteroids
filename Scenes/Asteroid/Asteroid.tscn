@@ -1,0 +1,48 @@
+[gd_scene load_steps=12 format=3 uid="uid://dobe78aplky8c"]
+
+[ext_resource type="Script" uid="uid://bc82lgbbk5tax" path="res://Scenes/Asteroid/Scripts/Asteroid.gd" id="1_i4hjy"]
+[ext_resource type="Script" uid="uid://c2ypo4upoxcxb" path="res://Resources/AsteroidSize/AsteroidSize.gd" id="2_bkogq"]
+[ext_resource type="Texture2D" uid="uid://b6bcntohim5k3" path="res://Scenes/Asteroid/Sprites/AsteroidBig.png" id="2_ixrp8"]
+[ext_resource type="Texture2D" uid="uid://miuit2rj2x40" path="res://Scenes/Asteroid/Sprites/AsteroidSmall.png" id="3_w0t7l"]
+[ext_resource type="Texture2D" uid="uid://cnxh8qee1gf48" path="res://Scenes/Asteroid/Sprites/AsteroidMedium.png" id="4_uhed6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bkogq"]
+radius = 0.285714
+
+[sub_resource type="Resource" id="Resource_w0t7l"]
+script = ExtResource("2_bkogq")
+texture = ExtResource("3_w0t7l")
+shape = SubResource("CircleShape2D_bkogq")
+metadata/_custom_type_script = "uid://c2ypo4upoxcxb"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhed6"]
+radius = 0.571429
+
+[sub_resource type="Resource" id="Resource_d5era"]
+script = ExtResource("2_bkogq")
+texture = ExtResource("4_uhed6")
+shape = SubResource("CircleShape2D_uhed6")
+metadata/_custom_type_script = "uid://c2ypo4upoxcxb"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_srkks"]
+radius = 1.0
+
+[sub_resource type="Resource" id="Resource_i0huf"]
+script = ExtResource("2_bkogq")
+texture = ExtResource("2_ixrp8")
+shape = SubResource("CircleShape2D_srkks")
+metadata/_custom_type_script = "uid://c2ypo4upoxcxb"
+
+[node name="Asteroid" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_i4hjy")
+asteroid_size_array = Array[ExtResource("2_bkogq")]([SubResource("Resource_w0t7l"), SubResource("Resource_d5era"), SubResource("Resource_i0huf")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ixrp8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(14, 14)
+shape = SubResource("CircleShape2D_srkks")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
